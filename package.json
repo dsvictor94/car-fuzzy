@@ -20,5 +20,6 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "line-intersect": "^1.0.0"
   }
 }
