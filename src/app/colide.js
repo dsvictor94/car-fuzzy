@@ -8,7 +8,7 @@ export default function colide (a, b) {
 
   if (type == 'colinear') return true
 
-  if (type == 'intersecting') return true
+  if (type == 'intersecting') return point
 
   return false
 }

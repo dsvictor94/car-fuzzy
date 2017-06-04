@@ -33,12 +33,14 @@ export default class GameLoop {
       const { _context, _scene, running } = this
       now = window.performance.now()
       dt = (now - last) / 1000;    // duration in seconds
-      _scene.update(dt)
-      _context.clearRect(0, 0, _context.canvas.width, _context.canvas.height)
-      _context.beginPath()
-      _context.save()
-      _scene.render(_context, dt)
-      _context.restore()
+      if (dt < 1) { // if too slow skip render and update
+        _scene.update(dt)
+        _context.clearRect(0, 0, _context.canvas.width, _context.canvas.height)
+        _context.beginPath()
+        _context.save()
+        _scene.render(_context, dt)
+        _context.restore()
+      }
       last = now;
       if (running)
         this.id = requestAnimationFrame(frame)
