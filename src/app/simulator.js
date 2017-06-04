@@ -1,5 +1,6 @@
 import segmentColide from './colide'
 import Sensor from './sensor'
+import Brain from './brain'
 
 const SENSOR_RANGE = 100
 const CAR_LENGTH = 36
@@ -12,7 +13,10 @@ export default class Simulator {
     this.a = Math.PI/4 // car angle
     this.o = -Math.PI/10 // steering wheel angle
     this.velocity = 40
+
     this.map = map
+    this.brain = new Brain(this)
+
     this.sensorA = new Sensor(this, SENSOR_RANGE, 0)
     this.sensorB = new Sensor(this, SENSOR_RANGE, Math.PI/4)
     this.sensorC = new Sensor(this, SENSOR_RANGE, -Math.PI/4)
@@ -38,6 +42,8 @@ export default class Simulator {
       this.sensorB.update()
       this.sensorC.update()
     }
+
+    this.brain.think()
   }
 
 

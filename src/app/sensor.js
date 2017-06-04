@@ -10,7 +10,9 @@ export default class Sensor {
   }
 
   sensorSegment () {
-    const {x, y, a: ca} = this.simulator
+    let {x, y, a: ca} = this.simulator
+    x += 20*Math.cos(ca)
+    y += 20*Math.sin(ca)
     const {size: s, angle: a} = this
     return { from: {x, y}, to: { x: x+s*Math.cos(a+ca), y: y+s*Math.sin(a+ca) }}
   }
