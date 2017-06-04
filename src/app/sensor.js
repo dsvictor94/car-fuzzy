@@ -10,9 +10,9 @@ export default class Sensor {
   }
 
   sensorSegment () {
-    const {x, y} = this.simulator
+    const {x, y, a: ca} = this.simulator
     const {size: s, angle: a} = this
-    return { from: {x, y}, to: { x: x+s*Math.cos(a), y: y+s*Math.sin(a) }}
+    return { from: {x, y}, to: { x: x+s*Math.cos(a+ca), y: y+s*Math.sin(a+ca) }}
   }
 
   update() {
@@ -33,11 +33,14 @@ export default class Sensor {
 
   render(ctx) {
     const {from, to} = this.sensorSegment()
+    ctx.save()
     ctx.beginPath()
+    ctx.strokeStyle=`rgb(${255 - this.dist}, 0, 0)`;
+    
     ctx.moveTo(from.x, from.y)
     ctx.lineTo(to.x, to.y)
-    ctx.strokeStyle=`rgb(${255 - this.dist}, 0, 0)`;
     ctx.stroke()
+    ctx.restore()
   }
 
 

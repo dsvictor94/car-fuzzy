@@ -33,10 +33,11 @@ export default class Simulator {
       this.x = newX
       this.y = newY
       this.a += velocity*dt/radiosOfRotation
+
+      this.sensorA.update()
+      this.sensorB.update()
+      this.sensorC.update()
     }
-    this.sensorA.update()
-    this.sensorB.update()
-    this.sensorC.update()
   }
 
 
@@ -52,9 +53,9 @@ export default class Simulator {
     ctx.font = "14px Arial";
     ctx.fillText(`fps: ${Math.round(1/dt)}`,2,14);
 
-    //this.sensorA.render(ctx)
-    //this.sensorB.render(ctx)
-    //this.sensorC.render(ctx)
+    this.sensorA.render(ctx)
+    this.sensorB.render(ctx)
+    this.sensorC.render(ctx)
 
     this.drawCar(ctx, dt)
     this.drawMap(ctx, dt)
