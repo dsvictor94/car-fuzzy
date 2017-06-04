@@ -36,10 +36,11 @@ export default class Sensor {
     ctx.save()
     ctx.beginPath()
     ctx.strokeStyle=`rgb(${255 - this.dist}, 0, 0)`;
-    
+
     ctx.moveTo(from.x, from.y)
     ctx.lineTo(to.x, to.y)
     ctx.stroke()
+    ctx.beginPath()
     ctx.restore()
   }
 
