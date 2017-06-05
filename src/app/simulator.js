@@ -8,10 +8,10 @@ const CAR_WIDTH = 14
 
 export default class Simulator {
   constructor (map) {
-    this.x = 400
-    this.y = 200
-    this.a = Math.PI/4 // car angle
-    this.o = -Math.PI/10 // steering wheel angle
+    this.x = 40
+    this.y = 20
+    this.a = Math.PI/6 // car angle
+    this.o = 0 // steering wheel angle
     this.velocity = 40
 
     this.map = map
