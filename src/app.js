@@ -3,15 +3,15 @@ import Simulator from './app/simulator'
 import Map from './app/map'
 
 const canvas = document.getElementById('canvas')
-const context = canvas.getContext('2d');
+const context = canvas.getContext('2d')
 
 const map = new Map(canvas)
 
-canvas.addEventListener("mousemove", map.move, false)
+canvas.addEventListener('mousemove', map.move, false)
 
-canvas.addEventListener("mousedown", map.start, false)
+canvas.addEventListener('mousedown', map.start, false)
 
-canvas.addEventListener("mouseup", map.end, false)
+canvas.addEventListener('mouseup', map.end, false)
 
 const game = new GameLoop()
   .fps(60)
@@ -19,5 +19,4 @@ const game = new GameLoop()
   .attach(context)
   .run()
 
-
-window.game = game; //to debug
+window.game = game // to debug

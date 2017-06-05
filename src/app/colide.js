@@ -1,4 +1,4 @@
-import {checkIntersection, colinearPointWithinSegment} from 'line-intersect'
+import {checkIntersection} from 'line-intersect'
 
 export default function colide (a, b) {
   const { type, point } = checkIntersection(
@@ -6,9 +6,9 @@ export default function colide (a, b) {
     b.from.x, b.from.y, b.to.x, b.to.y
   )
 
-  if (type == 'colinear') return true
+  if (type === 'colinear') return true
 
-  if (type == 'intersecting') return point
+  if (type === 'intersecting') return point
 
   return false
 }

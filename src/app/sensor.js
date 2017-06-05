@@ -11,13 +11,13 @@ export default class Sensor {
 
   sensorSegment () {
     let {x, y, a: ca} = this.simulator
-    x += 20*Math.cos(ca)
-    y += 20*Math.sin(ca)
+    x += 20 * Math.cos(ca)
+    y += 20 * Math.sin(ca)
     const {size: s, angle: a} = this
-    return { from: {x, y}, to: { x: x+s*Math.cos(a+ca), y: y+s*Math.sin(a+ca) }}
+    return { from: { x, y }, to: { x: x + s * Math.cos(a + ca), y: y + s * Math.sin(a + ca) } }
   }
 
-  update() {
+  update () {
     const segA = this.sensorSegment()
     const {x, y} = segA.from
 
@@ -26,18 +26,18 @@ export default class Sensor {
       const point = segmentColide(segA, segB)
       if (point === false) continue
       if (point === true) return 0
-      const {x:cx, y:cy} = point
-      const segDist = Math.sqrt((cx-x)**2 + (cy-y)**2)
+      const {x: cx, y: cy} = point
+      const segDist = Math.sqrt((cx - x) ** 2 + (cy - y) ** 2)
       if (segDist < dist) dist = segDist
     }
-    this.dist = parseInt(255*dist/this.size)
+    this.dist = parseInt(255 * dist / this.size)
   }
 
-  render(ctx) {
+  render (ctx) {
     const {from, to} = this.sensorSegment()
     ctx.save()
     ctx.beginPath()
-    ctx.strokeStyle=`rgb(${255 - this.dist}, 0, 0)`;
+    ctx.strokeStyle = `rgb(${255 - this.dist}, 0, 0)`
 
     ctx.moveTo(from.x, from.y)
     ctx.lineTo(to.x, to.y)
@@ -45,6 +45,4 @@ export default class Sensor {
     ctx.beginPath()
     ctx.restore()
   }
-
-
 }
